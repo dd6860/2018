@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用户注册</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+			var username = document.querySelector('#username');
+			// console.log(username)
+			username.onblur = function(){
+				hs();
+			}
+			document.onkeydown = function(e){
+				var key = e.keyCode ||e.which;
+				if(key=='38'){console.log(key);
+					document.querySelectorAll('input')[0].focus();
+					console.log(document.querySelectorAll('input')[0].value.length);
+					// document.querySelectorAll('input')[0].value= '';
+				}else if(key=='40'){console.log(key);
+					document.querySelectorAll('input')[1].focus();
+					document.querySelectorAll('input')[1].value= '';
+				}else if(key=='9'||key=='13'){
+					hs();
+				}
+
+			}
+
+			function hs(){
+				var _username = username.value;
+				var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState=='4'){
+						var aa = xhr.responseText;
+						var par = username.parentElement;
+						if(aa==='yes'){
+							par.className='form-group has-success';
+							username.nextElementSibling.innerHTML='';
+						}else if(aa==='no'){
+							par.className='form-group has-error';
+							username.nextElementSibling.innerHTML='不可用';
+						}
+					}
+				}
+				xhr.open('get','../api/checkname.1.php?username='+_username);
+				xhr.send();
+			}
+		})
+	</script>
+	<!-- 获取用户名节点，失去焦点触发，还有键盘触发函数
+	函数内容
+	获取输入框的值
+	创建XML，open拼接参数，发送参数
+	改变状态事件，得到返回的值，判断，改变样式 -->
+</head>
+<body>
+	<!-- 表单尽量用div包起来，方便添加样式 -->
+	<div class="container">
+		<h1>用户注册</h1>
+		<div class="form">
+			<div class="form-group">
+				<label for="username">用户名：</label>
+				<input type="text" id="username" name="username" class="form-control"  autofocus>
+	<!-- 用于写入提示文字 -->
+				<span class="help-block"></span>
+			</div>
+			<div class="form-group">
+				<label for="password">密码：</label>
+				<input type="password" id="password" name="password" class="form-control">
+			</div>
+			<div class="form-group">
+				<button class="btn btn-success">注册</button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
