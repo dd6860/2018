@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--   运营添加开始   -->
+<style>
+        .topicb_warp{width:100%;min-width:1200px;margin:0 auto;}
+        .topicbbox{width:1200px;margin:0 auto;padding:20px 0;overflow:hidden;}
+        .topicbbox .topicb_list{width:1220px;overflow:hidden;}
+        .topicbbox .topicb_list li{float:left;width:590px;margin:0 20px 20px 0;font-family: "微软雅黑",microsoft yahei,"宋体",Arial, Helvetica, sans-serif;}
+        .topicbbox .topicb_list li a{display:block;width:100%;height:100%;background:#fff;position:relative;overflow:hidden;line-height:0;}
+        .topicbbox .topicb_list li a img.pic{transition:all .3s;-webkit-transition:all .3s;-moz-transition:all .3s;-o-transition:all .3s;}
+        .topicbbox .topicb_list li a:hover img.pic{animation:opac 1s linear;-webkit-animation:opac 1s linear;-moz-animation:opac 1s linear;-o-animation:opac 1s linear;}
+        .topicbbox .topicb_list li a p{width:100%;height:46px;background:#fff;opacity:.8;position:absolute;left:0;bottom:0;}
+        .topicbbox .topicb_list li a b{font-weight:normal;font-size:18px;color:#333;height:46px;line-height:46px;position:absolute;left:20px;bottom:0;}
+        .topicbbox .topicb_list li a em{font-style:normal;font-size:16px;color:#949494;height:46px;line-height:46px;position:absolute;right:20px;bottom:0;}
+        .topicbbox .topicb_list li.begin a h3{position:absolute;left:0;top:50%;width:100%;height:80px;margin:-40px 0 0;text-align:center;}
+        .topicbbox .topicb_list li.begin a img.bpic{transition:all .3s;-webkit-transition:all .3s;-moz-transition:all .3s;-o-transition:all .3s;}
+        .topicbbox .topicb_list li.begin a:hover img.bpic{transform:scale(1.04);-webkit-transform:scale(1.04);-moz-transform:scale(1.04);-o-transform:scale(1.04);}
+        @keyframes opac{0%{opacity:1;}50%{opacity:.8;}100%{opacity:1;}}
+        @-webkit-keyframes opac{0%{opacity:1;}40%{opacity:.8;}100%{opacity:1;}}
+        @-moz-keyframes opac{0%{opacity:1;}40%{opacity:.8;}100%{opacity:1;}}
+        @-o-keyframes opac{0%{opacity:1;}40%{opacity:.8;}100%{opacity:1;}}
+        .topicbbox .topicmore{width:1200px;height:30px;margin:0 auto 20px;position:relative;text-align:center;overflow:hidden;}
+        .topicbbox .topicmore p{width:1200px;height:1px;line-height:1px;margin:15px auto 0;background:#333;}
+        .topicbbox .topicmore a{width:130px;height:30px;position:absolute;left:50%;top:0;margin:0 0 0 -65px;background:url(http://images.xiu.com/edm/hd_topic_160308/more.jpg) center top no-repeat;}
+        .topicbbox .topictips{display:none;width:1200px;height:30px;margin:10px  auto 0;text-align:center;font-size:16px;color:#949494;font-family: "微软雅黑",microsoft yahei,"宋体",Arial, Helvetica, sans-serif;}
+        .overlay{display:none;position:fixed;bottom: 0;left: 0;right: 0;top: 0;z-index:9999999;overflow-x: hidden;overflow-y: scroll;-webkit-overflow-scrolling: touch;}
+        .overlay .overlay_owarp{display: table;height: 100%;width: 100%;}
+        .overlay .overlay_iwarp{padding:60px 0;position: relative;vertical-align: top;display: table-cell;height: 100%;}
+        .overlay .overlay_close{bottom: 0;left: 0;position: absolute;right: 0;top: 0;cursor: pointer;z-index:1;}
+        .overlay a.topclose{display:block;width:35px;height:35px;background:url(http://images.xiu.com/edm/hd_topic_160308/close.png) no-repeat;position:fixed;right:30px;top:15px;z-index:9999999;cursor:pointer;}
+        .overlay a.topprev,.overlay a.topnext{display:block;width:35px;height:69px;position:fixed;top:50%;margin:-34px 0 0;z-index:99999999;cursor: pointer;}
+        .overlay a.topprev{background:url(http://images.xiu.com/edm/hd_topic_160308/prev.png) no-repeat;left:30px;}
+        .overlay a.topnext{background:url(http://images.xiu.com/edm/hd_topic_160308/next.png) no-repeat;right:30px;}
+        .overlay .overlay_box{margin: 0 auto;width:720px;background:url(http://images.xiu.com/edm/hd_topic_160308/loading11.jpg) center top repeat-y #f5f5f5;box-shadow:rgba(0,0,0,0.5) 0 0 10px;position:relative;z-index: 2;}
+        .overlay .overlay_boxin{width:720px;}
+        .overlaybg{opacity:.8;display:none;background:#fff;position: fixed;bottom: 0;left: 0;right: 0;top: 0;z-index:999999;}
+        .overblur{filter:blur(3px);-webkit-filter:blur(3px);-moz-filter:blur(3px);-o-filter:blur(3px);}
+        </style>
+        <script>
+        $(function(){
+            $("img.lazy").lazyload();
+            $(".overlay_close,.topclose").click(function(){
+                $(".overlaybg").css("display","none");
+                $(".overlay").css("display","none");
+                $(".topicb_warp,.fix_hg2,.navlist,.service_info,.footer").removeClass("overblur");
+            })
+            var leng = $(".topicbbox li:not(.newopen)").length;
+            function clkOpen($obj){
+                clkindex = $obj.parent().index()-$(".topicbbox li.newopen").length;
+                var links = $obj.attr("href");
+                $("#topicFrame").attr("src",links);
+                $("#topicFrame").load(function(){
+                    var mainheight = $(this).contents().find("body").height();
+                    $(this).height(mainheight);
+                }); 
+                $(".overlaybg").css("display","block");
+                $(".overlay").css("display","block");
+                $(".topicb_warp,.fix_hg2,.navlist,.service_info,.footer").addClass("overblur");
+            }
+            $(".topicbbox li:not(.newopen) a").click(function(){
+                clkOpen($(this));
+                if(clkindex<=0){
+                   $("a.topprev").hide();
+                   $("a.topnext").show();
+                }
+                if(clkindex>0 && clkindex+1<leng){
+                   $("a.topprev,a.topnext").show();
+                }
+                if(clkindex+1>=leng){
+                   $("a.topnext").hide();
+                   $("a.topprev").show();
+                }
+                return false;
+            })
+            $("a.topprev").click(function() {
+                if(clkindex>0){
+                    $("a.topprev,a.topnext").show();
+                    $(".topicbbox li:not(.newopen) a").click(function(){
+                        clkOpen($(this));
+                    }).parent().eq(clkindex-1).find("a").trigger("click");
+                }
+                if(clkindex<=0){
+                   $("a.topprev").hide();
+                }
+            });
+            $("a.topnext").click(function() {
+                if(clkindex<leng){
+                    $("a.topprev,a.topnext").show();
+                    $(".topicbbox li:not(.newopen) a").click(function(){
+                        clkOpen($(this));
+                    }).parent().eq(clkindex+1).find("a").trigger("click");
+                }
+                if(clkindex>=leng){
+                   $("a.topnext").hide();
+                }
+            });
+            //查看更多 加载更多
+            function showMoreNChildren(children, n) {
+                var hiddenChildren = children.filter(":hidden");
+                var cnt = hiddenChildren.length;
+                for ( var i = 0; i < n && i < cnt ; i++) {
+                    hiddenChildren.eq(i).show();
+                }
+                return cnt-n;
+            }
+            function showMore(child,moreClk){
+                child.each(function () {
+                    var pagesize = $(this).attr("pagesize") || 6;
+                    var children = $(this).children();
+                    if (children.length > pagesize) {
+                        for (var i = pagesize; i < children.length; i++) {
+                            children.eq(i).hide();
+                        }
+                        moreClk.click(function () {
+                            if (showMoreNChildren(children, pagesize) <= 0) {
+                                $(this).parent().hide();
+                                $(".topictips").show();
+                            };
+                        });
+                    }
+                });
+            }
+            showMore($(".topicb_list"),$("#showmore"));
+        });
+        </script>
+<div class="topicb_warp">
+<div class="topicbbox"> 
+<ul class="topicb_list" pagesize="24">
+<!--2018-5-17实验-->
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<!--2018-4-27实验-->
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<!--2018-4-27实验结束-->
+<!--2017-10-11更新-->
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li> 
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+
+<!-- 第一种图片列表 开始 -->
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li>
+<li class="begin newopen"><a href="" target="_blank"><img class="lazy bpic" src="" ><h3><img src=""></h3></a></li> 
+<!-- 第一种图片列表 结束 -->
+
+<!-- 第二种图片列表 结束 -->
+</ul>
+<div class="topicmore"><p></p><a href="" id="showmore"></a></div>
+<div class="topictips">- to be continued -</div>
+</div>
+</div>
+<!-- overlay start -->
+<div class="overlay">
+<div class="overlay_owarp">
+<div class="overlay_iwarp">
+<div class="overlay_close"></div>
+<a href="" class="topclose"></a>
+<a href="" class="topprev"></a>
+<a href="" class="topnext"></a>
+<div class="overlay_box">
+<div class="overlay_boxin"><iframe id="topicFrame" src="" width="100%" height="800" frameborder="0" scrolling="no"></iframe></div>
+</div>
+</div>
+</div>
+</div>
+<div class="overlaybg"></div>
+        <!-- overlay end -->
+        
+        <!--   运营添加结束   -->
+    
+</body>
+</html>

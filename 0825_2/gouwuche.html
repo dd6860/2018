@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script src="lib/jquery-3.2.1.js"></script>
+	<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <script src="lib/jquery-lxzoom/jquery.lxzoom.js"></script>
+    <script src="http://www.lanrenzhijia.com/ajaxjs/1.4.2/jquery-1.4.2.min.js"></script>
+    <script src="lib/jquery.imagezoom.min.js"></script> 
+    <style>
+        .top{width: 100%;height: 40px;background-color: rgb(245, 245, 168);line-height: 40px;text-align: center;position: relative;}
+        .qingkong{position: absolute;right: 0;top: 0;padding-right: 50px;font-size: 20px}
+        .lili{padding: 0 40px;margin: 20px 0;overflow: hidden; position: relative; border:2px solid #fff;}
+        .shanchu{position: absolute;right: 30px;top:30px;}
+        .midl{width:150px;height:150px;border:1px solid #ccc;margin-bottom: 10px;}
+        .midc{font-size: 18px;margin-bottom: 2px; }
+        .midr{font-size: 20px; }
+        .ts{position: absolute;left: 0;top: 0;display: none;} 
+        .dibu{width: 100%;height: 40px;background-color: rgb(245, 245, 168);line-height: 40px;text-align: right;font-size: 20px;margin-top: 30px; }
+        .goumai{height: 40px;width: 185px;}
+    </style>
+</head>
+<body>
+    <div id="gouwuche">
+        <div class="container">
+            <div class="top" >
+                <div class="btn-group" role="group" aria-label="..." style="position: absolute;left: 5px;top: 3px;">
+                    <button type="button" class="btn btn-default quanxuan">全选</button>
+                    <button type="button" class="btn btn-default fanxuan">反选</button>
+                </div>
+                <h1>购物车</h1>
+                <span class="qingkong">清空购物车</span>
+            </div>
+            <div class="mid" style="position: relative;">
+                <ul class="ullist" style="min-height: 100px;">
+                    <!-- <li   class="lili" >
+                        <p style="padding: 30px 0;">
+                            <input type="checkbox" class="xuanze" checked="checked" style="width: 20px;height: 20px;">
+                            <span>商品<i class="bianhao"></i></span>
+                            <button class="shanchu" >删除该商品</button>
+                        </p>
+                        <div class="midl col-sm-1" >
+                            <img src="img/baobao1.jpg" alt="" style="width: 100%;height: 100%;">
+                        </div>
+                        <div class="midc col-sm-3 col-sm-offset-1">
+                            <p class="paizi">牌子：<span>122sdfsdfsdf7</span> </p>
+                            <p class="zhekou">折扣：<span>783fsdf27</span></p>   
+                            <p class="yanse">颜色：<span>832sdfs7</span></p>
+                            <p class="miaosu">描述：<span>758dsfsdf37</span></p>                     
+                        </div>
+                        <div class="midr col-sm-4 col-sm-offset-2">
+                            <div class="col-sm-12">
+                                <span class="col-sm-4">数量：</span>
+                                <button class="col-sm-1 col-sm-offset-1 jian" >-</button>
+                                <input type="text" class="col-sm-2 col-sm-offset-1 shuliang" value="1">
+                                <button class="col-sm-1 col-sm-offset-1 jia">+</button>
+                            </div>
+                            <div class=" col-sm-12" style="padding-top: 30px;">
+                                <p><span class="col-sm-4">单价：</span> <span class="col-sm-5 col-sm-offset-3 danjia">12</span></p>
+                            </div> 
+                            <div class=" col-sm-12" style="padding-top: 30px;"><i class="col-sm-4 ">合计:</i>&nbsp;&nbsp;&nbsp;&nbsp;<span class="col-sm-5 col-sm-offset- heji"></span> </div> 
+                        </div>
+                    </li>  -->
+                </ul>
+                <div class="ts" >
+                    <h1>购物车空空如也</h1>
+                </div>               
+            </div>
+            <div class="dibu col-sm-12">
+                <p class=" col-sm-3 col-sm-offset-6">总价：<span class="total">0</span>元</p>
+                <button class="goumai col-sm-2 col-sm-offset-1 btn btn-success" >立即购买</button>
+            </div>
+        </div>
+    </div>
+    <script>
+            jQuery(function($){
+                // $zzz=$(".ullist").find("li")
+                // if($zzz){ $(".ts").hide();}
+
+                if(location.href.indexOf('username')>0){
+                    $lll=location.href
+                    // console.log(0)
+                    // console.log($lll);
+                    $username=$lll.split('username')[1].slice(1)
+                    // console.log($username)
+                    $res=""
+                    $.ajax({
+                    // 请求类型
+                        type:'POST',
+                    // 传输的数据
+                        data:`username=${$username}`,
+                    // 需要用到的PHP文件
+                        url:'api/gouwuche.php',
+                    // 链接成功后执行的函数，传入返回的结果
+                        success:function(res){  
+                            console.log(999)
+                            // console.log(res)
+                            // 结果转成数组
+                            $confirm = JSON.parse(res);
+                            // console.log($confirm)
+                            $arr=[];
+                            $confirm.forEach(function(item){
+                                $arr.push(item.goodsid)
+                            })
+                            // console.log($arr)
+                            // 得到ID,循环插入
+                            
+                            for(var i=0;i<$arr.length;i++){
+                                $.ajax({
+                                // 请求类型
+                                    type:'POST',
+                                // 传输的数据
+                                    data:`goodsid=${$arr[i]}`,
+                                // 需要用到的PHP文件
+                                    url:'api/gouwuche2.php',
+                                // 链接成功后执行的函数，传入返回的结果
+                                    success:function(res){  
+                                        // console.log(999);
+                                        // console.log(res);
+
+                                        $confirm = JSON.parse(res);
+                                        // console.log($confirm)
+                                        // console.log(4545)
+                                        $confirm.forEach(function(item){
+                                            // console.log(item)
+                                            // item=item[0]
+                                            // console.log(item)
+
+                                            $res+=`<li class="lili" data-id="${item.ID}">
+                                                    <p style="padding: 30px 0;">
+                                                        <input type="checkbox" class="xuanze" checked="checked" style="width: 20px;height: 20px;">
+                                                        <span>商品<i class="bianhao"></i></span>
+                                                        <button class="shanchu" >删除该商品</button>
+                                                    </p>
+                                                    <div class="midl col-sm-1" >
+                                                        <img src="${item.url}" alt="" style="width: 100%;height: 100%;">
+                                                    </div>
+                                                    <div class="midc col-sm-3 col-sm-offset-1">
+                                                        <p class="paizi">牌子：<span>${item.brand}</span> </p>
+                                                        <p class="zhekou">折扣：<span>${item.discount}</span></p>   
+                                                        <p class="yanse">颜色：<span>${item.color}</span></p>
+                                                        <p class="miaosu">描述：<span>${item.describe}</span></p>                
+                                                    </div>
+                                                    <div class="midr col-sm-4 col-sm-offset-2">
+                                                        <div class="col-sm-12">
+                                                            <span class="col-sm-4">数量：</span>
+                                                            <button class="col-sm-1 col-sm-offset-1 jian" >-</button>
+                                                            <input type="text" class="col-sm-2 col-sm-offset-1 shuliang" value="0">
+                                                            <button class="col-sm-1 col-sm-offset-1 jia">+</button>
+                                                        </div>
+                                                        <div class=" col-sm-12" style="padding-top: 30px;">
+                                                            <p><span class="col-sm-4">单价：</span> <span class="col-sm-5 col-sm-offset-3 danjia">${item.newprice}</span></p>
+                                                        </div> 
+                                                        <div class=" col-sm-12" style="padding-top: 30px;"><i class="col-sm-4 ">合计:</i>&nbsp;&nbsp;&nbsp;&nbsp;<span class="col-sm-5 col-sm-offset- heji">0</span> </div> 
+                                                    </div>
+                                                </li>`
+                                                // console.log($res)
+                                        
+                                                // console.log("000000000000000000000000000000000000000000")
+                                                $(".ullist").html($res); 
+                                        }) 
+                                    }
+                                })
+                            }  
+                        }
+                })
+            }
+        // 合计
+                
+
+
+        // 减
+                $('.jian').live('click',function(){
+                    $qqq = this.closest(".lili");
+                    $www=$($qqq)
+                    $i=$www.find(".shuliang")  .val();
+                    $j=$www.find(".danjia").text();
+                    if($i>0){
+                        $i--;
+                    }else{alert("客官不可以")}
+                    $www.find(".shuliang").val($i);
+                    console.log($www.find(".heji").text())
+                    $www.find(".heji").text($i*$j);
+                })
+        // 加
+                $('.jia').live('click',function(){
+                    $qqq = this.closest(".lili");
+                    $www=$($qqq)
+                    $i=$www.find(".shuliang").val();
+                    $j=$www.find(".danjia").text();
+                        $i++;
+                    $www.find(".shuliang").val($i);
+                    console.log($www.find(".heji").text())
+                    $www.find(".heji").text($i*$j);
+
+                })
+        // 清空
+                $(".qingkong").live("click",function(){
+                    $(".ullist").html("");
+                    $(".ts").show();
+                    console.log($username);
+                    $.ajax({
+                    // 请求类型
+                        type:'POST',
+                    // 传输的数据
+                        data:`username=${$username}`,
+                    // 需要用到的PHP文件
+                        url:'api/gouwucheqingkong.php',
+                    // 链接成功后执行的函数，传入返回的结果
+                        success:function(res){  
+                            // console.log(999)
+                            // console.log(res)
+                        }
+                    })
+
+                })
+        // 删除商品
+                $(".shanchu").live("click",function(){
+                    $(this).closest(".lili").remove();
+
+                    console.log($(this).parent().parent().attr("data-id"));
+                    $rrr=$(this).parent().parent().attr("data-id");
+
+
+                    $.ajax({
+                    // 请求类型
+                        type:'POST',
+                    // 传输的数据
+                        data:`username=${$username}&goodsid=${$rrr}`,
+                    // 需要用到的PHP文件
+                        url:'api/gouwucheshanchu.php',
+                    // 链接成功后执行的函数，传入返回的结果
+                        success:function(res){  
+                            console.log(999)
+                            console.log(res)
+                            // 结果转成数组
+                            // $confirm = JSON.parse(res);
+                            // console.log($confirm)
+                            // $arr=[];
+                            // $confirm.forEach(function(item){
+
+                            // })
+                        }
+                    })
+
+
+                })
+        // 总价计算
+                setInterval(()=>{
+                        var res=0;
+                        $ppp=$(".xuanze:checked").length
+                        // console.log($ppp);
+                        for($i=0;$i<$ppp;$i++){ 
+                            res+=($($(".xuanze:checked")[$i]).parent().parent().find(".heji").text()*1)
+                        }
+                        $(".total").html(res);  
+                        // console.log(0)
+                        if($(".ullist").find("li").length==0){
+                            $(".ts").show();
+                        }
+        // 选中出现底色
+                        $eee=$(".lili").length
+                        for($i=0;$i<$eee;$i++){
+                            $($(".bianhao")[$i]).html($i+1);
+                            $vvv=$(".xuanze")[$i].checked;
+                            // console.log($vvv)
+                            if($vvv){
+                                // $(".xuanze")[$i]
+                                // console.log($($(".xuanze")[$i]).closest("li"));
+                                $($(".xuanze")[$i]).closest("li").css("border","2px solid orange")
+                            }else(
+                                $($(".xuanze")[$i]).closest("li").css("border","2px solid #fff")
+                            )
+                        } 
+
+                    },100)
+        // 购买
+                $(".goumai").live('click',function(){
+                    alert("结束")
+                })        
+        // 全选
+                $(".quanxuan").live("click",function(){
+                    $(".xuanze").attr("checked",true)
+                })
+        // 反选
+                $(".fanxuan").live("click",function(){
+                    for($i=0;$i<$(".xuanze").length;$i++){
+                        console.log($(".xuanze:checked")[$i])
+                        // console.log(1)
+                        $vv=!$($(".xuanze")[$i]).attr("checked");
+                        console.log($vv);
+                        $($(".xuanze")[$i]).attr("checked",$vv);
+                        // console.log(2)
+                    }
+                })
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 测试====================================================================================
+                // console.log($("input[checked]"));
+                // console.log($($("input[checked]")[0]).parent().parent().find(".heji").text());
+
+                // console.log($("input[checked]")[0].parent().parent().find(".heji").text());
+                // console.log($("input[checked]")[1]);
+
+                // $ccc=$("input[checked]")
+                
+                // $ccc.forEach(function(){
+                    // res+=$(item).find('.xuanze').text();
+                // });
+                // console.log($($("input[checked]")[1]).parent().parent().find(".heji").text());
+                
+
+
+
+
+                // $ppp=$("input[checked]").length;          
+                // $(".jia").live("click",function(){
+                //     $ppp=$("input[checked]").length;
+
+                // })
+                
+
+                // setInterval(()=>{
+                //     var res=0;
+                //     // $ppp=$("input[checked]").length
+                //     console.log($ppp);
+                //     for($i=0;$i<$ppp;$i++){
+                        
+                //         res+=($($("input[checked]")[1]).parent().parent().find(".heji").text()*1)
+                //     }
+                //     $(".total").html(res);  
+                //     // console.log(0)
+                // },300)
+
+
+
+                // $ppp=$(".xuanze").attr("checked",true).length
+                // $ppp=$("input[checked]").length;          
+                // $(".xuanze").live("click",function(){
+
+
+
+                // })
+                // $(this).is("")
+
+
+
+
+// 测试===========================================
+
+
+                // setInterval(()=>{
+                //     var res=0;
+                //     $ppp=$(".xuanze:checked").length
+
+                //     console.log($ppp);
+                //     for($i=0;$i<$ppp;$i++){
+                        
+                //         res+=($($("input[checked]")[1]).parent().parent().find(".heji").text()*1)
+                //     }
+                //     $(".total").html(res);  
+                //     // console.log(0)
+                // },300)
+// ==============================  
+                // setInterval(()=>{
+                //     var res=0;
+                //     $ppp=$(".xuanze:checked").length
+                //     // console.log($ppp);
+                //     for($i=0;$i<$ppp;$i++){ 
+                //         res+=($($(".xuanze:checked")[$i]).parent().parent().find(".heji").text()*1)
+                //     }
+                //     $(".total").html(res);  
+                //     // console.log(0)
+                //     if($(".ullist").find("li").length==0){
+                //         $(".ts").show();
+                //     }
+                // },30)
+// ==============================                 
+
+
+            })
+        </script>
+</body>
+</html>
