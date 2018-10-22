@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script src="lib/jquery-3.2.1.js"></script>
+	<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <script src="lib/jquery-lxzoom/jquery.lxzoom.js"></script>
+    <style>
+        li{list-style: none;}
+        p{margin: 0;padding: 0;}
+        .f1{height: 60px;}
+        .f2{height: 50px;}
+        .f3{height: 120px;border:1px solid #ccc;}
+        .f3 .f32 li{margin: 5px;}
+
+        .f4{height: 40px;border:1px solid #ccc;margin-top: 80px;}
+        .f5{height: 1000px;border:1px solid #ccc;}
+        .f5 li{height: 432px;padding:5px;; border:1px solid #ccc; font-size: 12px;}
+        .f5 li img{width: 100%;height: 70%;}
+        .f34 li{float: left;padding: 6px;border:1px solid #ccc;margin-right: 10px;}
+    </style>
+</head>
+<body>
+    <div class="list">
+        <div class="container">
+            <div class="f1">
+                <img src="img/list_long.png" alt="" style="width: 100%;height: 100%;">
+            </div>
+            <div class="f2" style="position: relative;">
+                <p style="line-height: 50px;padding-left: 30px">你的位置：<a href="shouye2.html">首页</a> > <a href="" class="dqgoods">2</a></p>
+                <p style="position: absolute;right: 30px;top: 15px;">总共&nbsp;<span style="color:red" class="totalnum">144</span>&nbsp;件商品</p>
+            </div>
+            <div class="f3" style="position: relative;">
+                <div class="f31 col-sm-2" style="text-align: center;line-height: 68px;border:1px solid #ccc;">品&nbsp;&nbsp;&nbsp;&nbsp;牌</div>
+                <div class="f32 col-sm-10" style="border:1px solid #ccc;height: 70px;line-height: 60px;">
+                    <!-- <ul>
+                        <li class="col-sm-1" class="paizi1">1</li>
+                        <li class="col-sm-1" class="paizi2">2</li>
+                        <li class="col-sm-1" class="paizi3">3</li>
+                        <li class="col-sm-1" class="paizi4">4</li>
+                        <li class="col-sm-1" class="paizi5">5</li>
+                        <li class="col-sm-1" class="paizi5">5</li>
+                        <li class="col-sm-1" class="paizi5">5</li>
+                    </ul>   -->
+                </div>
+                <div class="f33 f31 col-sm-2" style="text-align: center;line-height: 50px;border:1px solid #ccc;height: 50px;">价&nbsp;&nbsp;&nbsp;&nbsp;格</div>
+                <div class="f34 f31 col-sm-10" style="border:1px solid #ccc;height: 50px; font-size: 12px;">
+                    <ul class="f34 f31 col-sm-6"style="margin: 8px 0 0 -25px;">
+                        <li class=""style="margin-left: 25px;">0-1000</li>
+                        <li class="">1000-1500</li>
+                        <li class="">1500-2000</li>
+                        <li class="">2000-2500</li>
+                        <li class="">2500-3000</li>
+                    </ul>
+                    <div class="col-sm-6">
+                            <p style="margin-top: 12px">
+                                <span class="col-sm-3">自定义:</span> 
+                                <input type="text" class="col-sm-2 jiage1">
+                                <span class="col-sm-1" style="margin-right: 10px;">——</span> 
+                                <input type="text" class="col-sm-3 jiage2">
+                                <button class="f34_btn col-sm-offset-1">&nbsp;确定&nbsp;</button>
+                            </p> 
+                    </div>
+                </div>
+                <div class="f3_hide"" style="display: none;">
+                    <div class="col-sm-2" style="text-align: center;line-height: 50px;border:1px solid #ccc;border-top: 0px;;height: 50px;">颜&nbsp;&nbsp;&nbsp;&nbsp;色</div>
+                    <div class="col-sm-10"  style="text-align: center;line-height: 50px;border:1px solid #ccc;;border-top: 0px;;height: 50px;">
+                        <ul>
+                            <li class="col-sm-1">黑色</li>
+                            <li class="col-sm-1">蓝色</li>
+                            <li class="col-sm-1">粉色</li>
+                            <li class="col-sm-1">红色</li>
+                            <li class="col-sm-1">棕色</li>
+                            <li class="col-sm-1">拼色</li>
+                            <li class="col-sm-1">白色</li>
+                            <li class="col-sm-1">米色</li>
+                            <li class="col-sm-1">多色</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="f35 col-sm-12" style="width: 300px;height: 30px;background-color: #ddd;position: absolute;bottom: -32px;left: 430px;border-radius:5px"><p style="text-align: center;line-height: 30px;">更多选择（颜色等）<span class="glyphicon glyphicon-chevron-down" ></span></p> </div>
+            </div>
+            <div class="f4" style="padding:5px 0 0 10px ">
+                <div class="btn-group col-sm-4 btn_anz" role="group" >
+                        <button type="button" class="btn btn-default btn-sm f4_btn btn_mr">&nbsp;&nbsp;默认&nbsp;&nbsp;</button>
+                        <button type="button" class="btn btn-default btn-sm f4_btn jiage">价格<span class="glyphicon glyphicon-arrow-up"></span><span class="glyphicon glyphicon-arrow-down"></span></button>
+                        <button type="button" class="btn btn-default btn-sm f4_btn  zhekou">折扣<span class="glyphicon glyphicon-arrow-up"></span><span class="glyphicon glyphicon-arrow-down"></span></button>
+                        <button type="button" class="btn btn-default btn-sm f4_btn ">上架时间<span class="glyphicon glyphicon-arrow-up"></span><span class="glyphicon glyphicon-arrow-down"></span></button>
+                </div>
+                <div class="f4_fh col-sm-5">
+                    <span>发货方式</span>
+                    <label class="btn ">
+                        <input type="radio" name="options" id="options1">全部
+                    </label>
+                    <label class="btn ">
+                        <input type="radio" name="options" id="options1">海外发货
+                    </label>
+                    <label class="btn " >
+                        <input type="radio" name="options" id="options1">国内发货
+                    </label>
+                </div>
+                <div class="f4_fy col-sm-offset-6" >
+                    <span>1/1</span class><span class="glyphicon glyphicon-triangle-left btn" style="color:#ccc;"></span ><span class=" btn" style="color:#ccc;">上一页</span><span class=" btn">下一页</span><span class="glyphicon glyphicon-triangle-right btn"></span>
+                </div>
+            </div>
+            <div class="f5">
+                <!-- <li class="col-sm-3">
+                    <img src="img/man33.png" alt="">
+                    <p class="paizi">coach</p>
+                    <p class="miaosu">dfgfasgaewgfswdafgdsfsdfgsdf</p>
+                    <p class="price"><span>1835</span><span>2293</span></p>
+                    <div class="kou"><span>限时8折</span></div>
+                    <div class="size"><p>可售尺寸</p><span>38</span></div>
+                </li> -->
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
+<style>
+    .f5 li{padding: 10px;font-size: 16px;}
+    .f5 .paizi{color:red;font-size: 16px;padding: 8px 0;}
+    .f5 .paizi::before{content: "品牌："}
+    .f5 .size{position: absolute;left: 30px;bottom: 135px;font-size: 20px;color:yellow;display: none;}
+    .f5 li:hover .size{display: block;}
+    .f5 .miaosu{font-size: 16px;padding: 8px 0;}
+    .f5 li p:nth-child(4) span:nth-child(1){color:red;font-size: 20px;padding-right: 0px;}
+
+</style>
+<script>
+    jQuery(function($){
+        $item=""
+        if(location.href.indexOf('goods')>0){
+
+            if(location.href.indexOf('username')>0){
+                $item = decodeURI(location.href.split('&')[1].split('=')[1]) ;
+            }else{
+                $item = decodeURI(location.href.split('=')[1]) ;
+            }
+
+            $(".dqgoods").text($item)
+        }
+
+        if($item.slice(-1)=="包"){
+            $style="1"
+            $(".paizi1").text("")
+            $(".paizi2").text("")
+            $(".paizi3").text("")
+            $(".paizi4").text("")
+            $(".paizi5").text("")
+        }else if($item.slice(-1)=="衣"){
+            $style="2"
+            $(".paizi1").text("")
+            $(".paizi2").text("")
+            $(".paizi3").text("")
+            $(".paizi4").text("")
+            $(".paizi5").text("")
+        }else if($item.slice(-1)=="衫"){
+            $style="3"
+            $(".paizi1").text("")
+            $(".paizi2").text("")
+            $(".paizi3").text("")
+            $(".paizi4").text("")
+            $(".paizi5").text("")
+        }else if($item.slice(-1)=="品"){
+            $style="4"
+            $(".paizi1").text("")
+            $(".paizi2").text("")
+            $(".paizi3").text("")
+            $(".paizi4").text("")
+            $(".paizi5").text("")
+        }
+
+        $zk=1;
+        $jiagetrue=1;
+        $zhekoutrue=1;
+        $shijiantrue=1;
+// 入口，数据列表  （完 ）  
+        if($style==='1'||$style==='2'||$style==='3'){
+            $.ajax({
+            // 请求类型
+                type:'POST',
+            // 传输的数据
+                data:`goods=${$style}`,
+            // 需要用到的PHP文件
+                url:'api/list_goods.php',
+            // 链接成功后执行的函数，传入返回的结果
+                success:function(res){  
+                    // console.log(999)
+                    // console.log(res)
+                    // 结果转成数组
+                    $confirm = JSON.parse(res);
+                    // console.log(confirm)
+                    $res="";
+                    $confirm.forEach(function(item,idx){
+                        // console.log(idx);
+                        $(".totalnum").text(idx+1);
+                        $res+=`<li class="col-sm-3" data-id="${item.ID}">
+                        <img src="${item.url}" alt="">
+                        <p class="paizi">${item.brand}</p>
+                        <p class="miaosu">${item.describe}</p>
+                        <p class="price">售价：<span style="color:red;">${item.newprice}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原价：<del>${item.oldprice}</del></p>
+                        <div class="kou"><span>限时${item.discount}折</span></div>
+                        <div class="size"><p>可售尺寸</p><span>38</span></div>
+                    </li>`
+                    });
+                    $(".f5").html($res);
+                }
+            })
+            //入口，品牌分类    （完）
+            $.ajax({
+            // 请求类型
+                type:'POST',
+            // 传输的数据
+                data:`goods=${$style}`,
+            // 需要用到的PHP文件
+                url:'api/list_brand.php',
+            // 链接成功后执行的函数，传入返回的结果
+                success:function(res){  
+                    // console.log(999)
+                    // console.log(res)
+                    // 结果转成数组
+                    $confirm1 = JSON.parse(res);
+                    // console.log($confirm1)
+                    $res1="<ul> ";
+                    $confirm1.forEach(function(item){   
+                        $res1+=`<li class="col-sm-1" class="paizi1">${item.brand}</li></li>`
+                    });
+                    $res1+="</ul> "
+                    $(".f32").html($res1);
+                }
+            })
+
+            //品牌分类列表      （完）
+        $(".f32").on("click","li",function(){
+            // console.log($(this).text());
+            // $ddd=
+            $.ajax({
+            // 请求类型
+                type:'POST',
+            // 传输的数据
+                data:`goods=${$style}&paizishow=${$(this).text()}`,
+            // 需要用到的PHP文件
+                url:'api/list_paizishow.php',
+                // dataType:'json',
+            // 链接成功后执行的函数，传入返回的结果
+                success:function(res){  
+                    console.log(999)
+                    // console.log(res)
+                    // 结果转成数组
+                    $confirm = JSON.parse(res);
+                    console.log($confirm)
+                    $res="";
+                    $confirm.forEach(function(item,idx){
+                        $(".totalnum").text(idx+1);
+                        $res+=`<li class="col-sm-3" data-id="${item.ID}">
+                        <img src="${item.url}" alt="">
+                        <p class="paizi">${item.brand}</p>
+                        <p class="miaosu">${item.describe}</p>
+                        <p class="price">售价：<span style="color:red;">${item.newprice}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原价：<del>${item.oldprice}</del></p>
+                        <div class="kou"><span>限时${item.discount}折</span></div>
+                        <div class="size"><p>可售尺寸</p><span>38</span></div>
+                    </li>`
+                    });
+                    $(".f5").html($res);
+
+                }
+            })
+
+
+        })
+// 价格筛选           （完）
+        $(".f34").on("click","li",function(){
+            $hz=$(this).index()
+            console.log($(this).index())
+            console.log($hz)
+            if($hz===0){
+            $price1=0;
+            $price2= 1000;
+            }else if($hz===1){
+            $price1=1000;
+            $price2=1500;
+            }else if($hz===2){
+            $price1=1500;
+            $price2=2000;
+            }else if($hz===3){
+            $price1=2000;
+            $price2= 2500;
+            }else if($hz===4){
+            $price1=2500;
+            $price2= 3000;
+            }else if($hz===5){
+            $price1=3000;
+            $price2= 1000000;
+            }
+            $.ajax({
+            // 请求类型
+                type:'POST',
+            // 传输的数据
+                data:`goods=${$style}&price1=${$price1}&price2=${$price2}`,
+            // 需要用到的PHP文件
+                url:'api/2.php',
+            // 链接成功后执行的函数，传入返回的结果
+                success:function(res){  
+                    // console.log(999)
+                    // console.log(res)
+                    // 结果转成数组
+                    $confirm = JSON.parse(res);
+                // console.log(confirm)
+                    $res="";
+                    $confirm.forEach(function(item,idx){
+                        $(".totalnum").text(idx+1);
+                        $res+=`<li class="col-sm-3" data-id="${item.ID}">
+                        <img src="${item.url}" alt="">
+                        <p class="paizi">${item.brand}</p>
+                        <p class="miaosu">${item.describe}</p>
+                        <p class="price">售价：<span style="color:red;">${item.newprice}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原价：<del>${item.oldprice}</del></p>
+                        <div class="kou"><span>限时${item.discount}折</span></div>
+                        <div class="size"><p>可售尺寸</p><span>38</span></div>
+                    </li>`
+                    });
+                    $(".f5").html($res);
+                }
+            }) 
+        })
+//  价格输入时筛选
+        $(".f34_btn").on('click',function(){
+            $price1=$(".jiage1").val();
+            $price2=$(".jiage2").val();
+            $.ajax({
+            // 请求类型
+                type:'POST',
+            // 传输的数据
+                data:`goods=${$style}&price1=${$price1}&price2=${$price2}`,
+            // 需要用到的PHP文件
+                url:'api/2.php',
+            // 链接成功后执行的函数，传入返回的结果
+                success:function(res){  
+                    // console.log(999)
+                    // console.log(res)
+                    // 结果转成数组
+                    $confirm = JSON.parse(res);
+                // console.log(confirm)
+                    $res="";
+                    $confirm.forEach(function(item,idx){
+                        $(".totalnum").text(idx+1);
+                        $res+=`<li class="col-sm-3" data-id="${item.ID}">
+                        <img src="${item.url}" alt="">
+                        <p class="paizi">${item.brand}</p>
+                        <p class="miaosu">${item.describe}</p>
+                        <p class="price">售价：<span style="color:red;">${item.newprice}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原价：<del>${item.oldprice}</del></p>
+                        <div class="kou"><span>限时${item.discount}折</span></div>
+                        <div class="size"><p>可售尺寸</p><span>38</span></div>
+                    </li>`
+                    });
+                    $(".f5").html($res);
+                }
+            }) 
+        })
+
+
+// 下面四个按键
+        $(".btn_anz").on("click","button",function(){
+            $anz=$(this).index()
+            // console.log($(this).index())
+            console.log("按钮"+$anz)   
+    //1、 默认排序  （完） 
+            if($anz===0){
+                $.ajax({
+                // 请求类型
+                    type:'POST',
+                // 传输的数据
+                    data:`goods=${$style}`,
+                // 需要用到的PHP文件
+                    url:'api/list_goods.php',
+                // 链接成功后执行的函数，传入返回的结果
+                    success:function(res){  
+                        // console.log(999)
+                        // console.log(res)
+                        // 结果转成数组
+                        $confirm = JSON.parse(res);
+                        // console.log(confirm)
+                        $res="";
+                        $confirm.forEach(function(item,idx){
+                            $(".totalnum").text(idx+1);
+                            $res+=`<li class="col-sm-3" data-id="${item.ID}">
+                            <img src="${item.url}" alt="">
+                            <p class="paizi">${item.brand}</p>
+                            <p class="miaosu">${item.describe}</p>
+                            <p class="price">售价：<span style="color:red;">${item.newprice}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原价：<del>${item.oldprice}</del></p>
+                            <div class="kou"><span>限时${item.discount}折</span></div>
+                            <div class="size"><p>可售尺寸</p><span>38</span></div>
+                        </li>`
+                        });
+                        $(".f5").html($res);
+                    }
+                })
+    // 价格排序     (完)
+            }else if($anz===1){
+                if($jiagetrue%2===1){
+                     $jiagesj="asc";
+                     $jiagetrue++;
+                }else{
+                  $jiagesj="desc";  
+                  $jiagetrue++;
+
+                }
+                $.ajax({
+                // 请求类型
+                    type:'POST',
+                // 传输的数据
+                    data:`goods=${$style}&jiagesj=${$jiagesj}`,
+                // 需要用到的PHP文件
+                    url:'api/anniu2_jiage.php',
+                // 链接成功后执行的函数，传入返回的结果
+                    success:function(res){  
+                        console.log(999)
+                        // console.log(res)
+                        // 结果转成数组
+                        $confirm = JSON.parse(res);
+                        console.log($confirm)
+                        $res="";
+                        $confirm.forEach(function(item,idx){
+                            $(".totalnum").text(idx+1);
+                            $res+=`<li class="col-sm-3" data-id="${item.ID}">
+                            <img src="${item.url}" alt="">
+                            <p class="paizi">${item.brand}</p>
+                            <p class="miaosu">${item.describe}</p>
+                            <p class="price">售价：<span style="color:red;">${item.newprice}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原价：<del>${item.oldprice}</del></p>
+                            <div class="kou"><span>限时${item.discount}折</span></div>
+                            <div class="size"><p>可售尺寸</p><span>38</span></div>
+                        </li>`
+                        });
+                        $(".f5").html($res);
+
+                    }
+                })    
+    // 折扣排序
+            }else if($anz===2){
+                if($zhekoutrue%2===1){
+                     $zhekousj="asc";
+                     $zhekoutrue++;
+                }else{
+                  $zhekousj="desc";  
+                  $zhekoutrue++;
+
+                }
+                $.ajax({
+                // 请求类型
+                    type:'POST',
+                // 传输的数据
+                    data:`goods=${$style}&zhekousj=${$zhekousj}`,
+                // 需要用到的PHP文件
+                    url:'api/anniu3_zhekou.php',
+                // 链接成功后执行的函数，传入返回的结果
+                    success:function(res){  
+                        console.log(999)
+                        // console.log(res)
+                        // 结果转成数组
+                        $confirm = JSON.parse(res);
+                        console.log($confirm)
+                        $res="";
+                        $confirm.forEach(function(item,idx){
+                            $(".totalnum").text(idx+1);
+                            $res+=`<li class="col-sm-3" data-id="${item.ID}">
+                            <img src="${item.url}" alt="">
+                            <p class="paizi">${item.brand}</p>
+                            <p class="miaosu">${item.describe}</p>
+                            <p class="price">售价：<span style="color:red;">${item.newprice}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原价：<del>${item.oldprice}</del></p>
+                            <div class="kou"><span>限时${item.discount}折</span></div>
+                            <div class="size"><p>可售尺寸</p><span>38</span></div>
+                        </li>`
+                        });
+                        $(".f5").html($res);
+
+                    }
+                })
+
+    // 上架时间排序
+            }else if($anz===3){ 
+                if($shijiantrue%2===1){
+                     $shijiansj="asc";
+                     $shijiantrue++;
+                }else{
+                  $shijiansj="desc";  
+                  $shijiantrue++;
+
+                }
+                $.ajax({
+                // 请求类型
+                    type:'POST',
+                // 传输的数据
+                    data:`goods=${$style}&shijiansj=${$shijiansj}`,
+                // 需要用到的PHP文件
+                    url:'api/anniu4_shijian.php',
+                // 链接成功后执行的函数，传入返回的结果
+                    success:function(res){  
+                        console.log(999)
+                        // console.log(res)
+                        // 结果转成数组
+                        $confirm = JSON.parse(res);
+                        console.log($confirm)
+                        $res="";
+                        $confirm.forEach(function(item,idx){
+                            $(".totalnum").text(idx+1);
+                            $res+=`<li class="col-sm-3" data-id="${item.ID}">
+                            <img src="${item.url}" alt="">
+                            <p class="paizi">${item.brand}</p>
+                            <p class="miaosu">${item.describe}</p>
+                            <p class="price">售价：<span style="color:red;">${item.newprice}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原价：<del>${item.oldprice}</del></p>
+                            <div class="kou"><span>限时${item.discount}折</span></div>
+                            <div class="size"><p>可售尺寸</p><span>38</span></div>
+                        </li>`
+                        });
+                        $(".f5").html($res);
+
+                    }
+                })
+
+            }
+        })
+
+        }
+        if($style==='4'){
+            $.ajax({
+            // 请求类型
+                type:'POST',
+            // 传输的数据
+                data:``,
+            // 需要用到的PHP文件
+                url:'api/list_goodsall.php',
+            // 链接成功后执行的函数，传入返回的结果
+                success:function(res){  
+                    // console.log(999)
+                    // console.log(res)
+                    // 结果转成数组
+                    $confirm = JSON.parse(res);
+                    // console.log(confirm)
+                    $res="";
+                    $confirm.forEach(function(item,idx){
+                        console.log(idx)
+                            $(".totalnum").text(idx+1);
+                        $res+=`<li class="col-sm-3" data-id="${item.ID}">
+                        <img src="${item.url}" alt="">
+                        <p class="paizi">${item.brand}</p>
+                        <p class="miaosu">${item.describe}</p>
+                        <p class="price">售价：<span style="color:red;">${item.newprice}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原价：<del>${item.oldprice}</del></p>
+                        <div class="kou"><span>限时${item.discount}折</span></div>
+                        <div class="size"><p>可售尺寸</p><span>38</span></div>
+                    </li>`
+                    });
+                    $(".f5").html($res);
+                }
+            })
+                //入口，品牌分类    （完）
+                $.ajax({
+            // 请求类型
+                type:'POST',
+            // 传输的数据
+                data:``,
+            // 需要用到的PHP文件
+                url:'api/list_brandall.php',
+            // 链接成功后执行的函数，传入返回的结果
+                success:function(res){  
+                    // console.log(999)
+                    // console.log(res)
+                    // 结果转成数组
+                    $confirm1 = JSON.parse(res);
+                    // console.log($confirm1)
+                    $res1="<ul> ";
+                    $confirm1.forEach(function(item){   
+                        $res1+=`<li class="col-sm-1" class="paizi1">${item.brand}</li></li>`
+                    });
+                    $res1+="</ul> "
+                    $(".f32").html($res1);
+                }
+            })
+
+    //品牌分类列表      （完）
+        $(".f32").on("click","li",function(){
+            // console.log($(this).text());
+            // $ddd=
+            $.ajax({
+            // 请求类型
+                type:'POST',
+            // 传输的数据
+                data:`paizishow=${$(this).text()}`,
+            // 需要用到的PHP文件
+                url:'api/list_paizishowall.php',
+                // dataType:'json',
+            // 链接成功后执行的函数，传入返回的结果
+                success:function(res){  
+                    console.log(999)
+                    // console.log(res)
+                    // 结果转成数组
+                    $confirm = JSON.parse(res);
+                    console.log($confirm)
+                    $res="";
+                    $confirm.forEach(function(item,idx){
+                            $(".totalnum").text(idx+1);
+                        $res+=`<li class="col-sm-3" data-id="${item.ID}">
+                        <img src="${item.url}" alt="">
+                        <p class="paizi">${item.brand}</p>
+                        <p class="miaosu">${item.describe}</p>
+                        <p class="price">售价：<span style="color:red;">${item.newprice}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原价：<del>${item.oldprice}</del></p>
+                        <div class="kou"><span>限时${item.discount}折</span></div>
+                        <div class="size"><p>可售尺寸</p><span>38</span></div>
+                    </li>`
+                    });
+                    $(".f5").html($res);
+
+                }
+            })
+
+
+        })
+// 价格筛选           （完）
+        $(".f34").on("click","li",function(){
+            $hz=$(this).index()
+            console.log($(this).index())
+            console.log($hz)
+            if($hz===0){
+            $price1=0;
+            $price2= 1000;
+            }else if($hz===1){
+            $price1=1000;
+            $price2=1500;
+            }else if($hz===2){
+            $price1=1500;
+            $price2=2000;
+            }else if($hz===3){
+            $price1=2000;
+            $price2= 2500;
+            }else if($hz===4){
+            $price1=2500;
+            $price2= 3000;
+            }else if($hz===5){
+            $price1=3000;
+            $price2= 1000000;
+            }
+            $.ajax({
+            // 请求类型
+                type:'POST',
+            // 传输的数据
+                data:`price1=${$price1}&price2=${$price2}`,
+            // 需要用到的PHP文件
+                url:'api/2all.php',
+            // 链接成功后执行的函数，传入返回的结果
+                success:function(res){  
+                    // console.log(999)
+                    // console.log(res)
+                    // 结果转成数组
+                    $confirm = JSON.parse(res);
+                // console.log(confirm)
+                    $res="";
+                    $confirm.forEach(function(item,idx){
+                            $(".totalnum").text(idx+1);
+                        $res+=`<li class="col-sm-3" data-id="${item.ID}">
+                        <img src="${item.url}" alt="">
+                        <p class="paizi">${item.brand}</p>
+                        <p class="miaosu">${item.describe}</p>
+                        <p class="price">售价：<span style="color:red;">${item.newprice}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原价：<del>${item.oldprice}</del></p>
+                        <div class="kou"><span>限时${item.discount}折</span></div>
+                        <div class="size"><p>可售尺寸</p><span>38</span></div>
+                    </li>`
+                    });
+                    $(".f5").html($res);
+                }
+            }) 
+        })
+//  价格输入时筛选
+        $(".f34_btn").on('click',function(){
+            $price1=$(".jiage1").val();
+            $price2=$(".jiage2").val();
+            $.ajax({
+            // 请求类型
+                type:'POST',
+            // 传输的数据
+                data:`price1=${$price1}&price2=${$price2}`,
+            // 需要用到的PHP文件
+                url:'api/2all.php',
+            // 链接成功后执行的函数，传入返回的结果
+                success:function(res){  
+                    // console.log(999)
+                    // console.log(res)
+                    // 结果转成数组
+                    $confirm = JSON.parse(res);
+                // console.log(confirm)
+                    $res="";
+                    $confirm.forEach(function(item,idx){
+                            $(".totalnum").text(idx+1);
+                        $res+=`<li class="col-sm-3" data-id="${item.ID}">
+                        <img src="${item.url}" alt="">
+                        <p class="paizi">${item.brand}</p>
+                        <p class="miaosu">${item.describe}</p>
+                        <p class="price">售价：<span style="color:red;">${item.newprice}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原价：<del>${item.oldprice}</del></p>
+                        <div class="kou"><span>限时${item.discount}折</span></div>
+                        <div class="size"><p>可售尺寸</p><span>38</span></div>
+                    </li>`
+                    });
+                    $(".f5").html($res);
+                }
+            }) 
+        })
+
+
+// 下面四个按键
+        $(".btn_anz").on("click","button",function(){
+            $anz=$(this).index()
+            // console.log($(this).index())
+            console.log("按钮"+$anz)   
+    //1、 默认排序  （完） 
+            if($anz===0){
+                $.ajax({
+                // 请求类型
+                    type:'POST',
+                // 传输的数据
+                    data:``,
+                // 需要用到的PHP文件
+                    url:'api/list_goodsalll.php',
+                // 链接成功后执行的函数，传入返回的结果
+                    success:function(res){  
+                        // console.log(999)
+                        // console.log(res)
+                        // 结果转成数组
+                        $confirm = JSON.parse(res);
+                        // console.log(confirm)
+                        $res="";
+                        $confirm.forEach(function(item,idx){
+                            $(".totalnum").text(idx+1);
+                            $res+=`<li class="col-sm-3" data-id="${item.ID}">
+                            <img src="${item.url}" alt="">
+                            <p class="paizi">${item.brand}</p>
+                            <p class="miaosu">${item.describe}</p>
+                            <p class="price">售价：<span style="color:red;">${item.newprice}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原价：<del>${item.oldprice}</del></p>
+                            <div class="kou"><span>限时${item.discount}折</span></div>
+                            <div class="size"><p>可售尺寸</p><span>38</span></div>
+                        </li>`
+                        });
+                        $(".f5").html($res);
+                    }
+                })
+    // 价格排序     (完)
+            }else if($anz===1){
+                if($jiagetrue%2===1){
+                     $jiagesj="asc";
+                     $jiagetrue++;
+                }else{
+                  $jiagesj="desc";  
+                  $jiagetrue++;
+
+                }
+                $.ajax({
+                // 请求类型
+                    type:'POST',
+                // 传输的数据
+                    data:`jiagesj=${$jiagesj}`,
+                // 需要用到的PHP文件
+                    url:'api/anniu2_jiageall.php',
+                // 链接成功后执行的函数，传入返回的结果
+                    success:function(res){  
+                        console.log(999)
+                        // console.log(res)
+                        // 结果转成数组
+                        $confirm = JSON.parse(res);
+                        console.log($confirm)
+                        $res="";
+                        $confirm.forEach(function(item,idx){
+                            $(".totalnum").text(idx+1);
+                            $res+=`<li class="col-sm-3" data-id="${item.ID}">
+                            <img src="${item.url}" alt="">
+                            <p class="paizi">${item.brand}</p>
+                            <p class="miaosu">${item.describe}</p>
+                            <p class="price">售价：<span style="color:red;">${item.newprice}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原价：<del>${item.oldprice}</del></p>
+                            <div class="kou"><span>限时${item.discount}折</span></div>
+                            <div class="size"><p>可售尺寸</p><span>38</span></div>
+                        </li>`
+                        });
+                        $(".f5").html($res);
+
+                    }
+                })    
+    // 折扣排序
+            }else if($anz===2){
+                if($zhekoutrue%2===1){
+                     $zhekousj="asc";
+                     $zhekoutrue++;
+                }else{
+                  $zhekousj="desc";  
+                  $zhekoutrue++;
+
+                }
+                $.ajax({
+                // 请求类型
+                    type:'POST',
+                // 传输的数据
+                    data:`zhekousj=${$zhekousj}`,
+                // 需要用到的PHP文件
+                    url:'api/anniu3_zhekouall.php',
+                // 链接成功后执行的函数，传入返回的结果
+                    success:function(res){  
+                        console.log(999)
+                        // console.log(res)
+                        // 结果转成数组
+                        $confirm = JSON.parse(res);
+                        console.log($confirm)
+                        $res="";
+                        $confirm.forEach(function(item,idx){
+                            $(".totalnum").text(idx+1);
+                            $res+=`<li class="col-sm-3" data-id="${item.ID}">
+                            <img src="${item.url}" alt="">
+                            <p class="paizi">${item.brand}</p>
+                            <p class="miaosu">${item.describe}</p>
+                            <p class="price">售价：<span style="color:red;">${item.newprice}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原价：<del>${item.oldprice}</del></p>
+                            <div class="kou"><span>限时${item.discount}折</span></div>
+                            <div class="size"><p>可售尺寸</p><span>38</span></div>
+                        </li>`
+                        });
+                        $(".f5").html($res);
+
+                    }
+                })
+
+    // 上架时间排序
+            }else if($anz===3){ 
+                if($shijiantrue%2===1){
+                     $shijiansj="asc";
+                     $shijiantrue++;
+                }else{
+                  $shijiansj="desc";  
+                  $shijiantrue++;
+
+                }
+                $.ajax({
+                // 请求类型
+                    type:'POST',
+                // 传输的数据
+                    data:`shijiansj=${$shijiansj}`,
+                // 需要用到的PHP文件
+                    url:'api/anniu4_shijianall.php',
+                // 链接成功后执行的函数，传入返回的结果
+                    success:function(res){  
+                        console.log(999)
+                        // console.log(res)
+                        // 结果转成数组
+                        $confirm = JSON.parse(res);
+                        console.log($confirm)
+                        $res="";
+                        $confirm.forEach(function(item,idx){
+                            $(".totalnum").text(idx+1);
+                            $res+=`<li class="col-sm-3" data-id="${item.ID}">
+                            <img src="${item.url}" alt="">
+                            <p class="paizi">${item.brand}</p>
+                            <p class="miaosu">${item.describe}</p>
+                            <p class="price">售价：<span style="color:red;">${item.newprice}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原价：<del>${item.oldprice}</del></p>
+                            <div class="kou"><span>限时${item.discount}折</span></div>
+                            <div class="size"><p>可售尺寸</p><span>38</span></div>
+                        </li>`
+                        });
+                        $(".f5").html($res);
+
+                    }
+                })
+
+            }
+        })
+
+
+
+
+
+        }
+        
+
+
+
+
+        $(".f5").on("click","li",function(){
+            console.log($(this).attr('data-id'));
+            $aaaa=$(this).attr('data-id')
+
+            if(location.href.indexOf('username')>0){
+                $searchusername = location.href.split('?')[1].split("&")[0].split('=')[1];
+                if($searchusername.slice(-1)=='#'){
+                    $searchusername=$searchusername.slice(0,-1)
+                    }
+                console.log($searchusername)
+                window.location.href = `detail.html?username=${$searchusername}&goodsid=${$aaaa}`;   
+
+            }else{
+                window.location.href = `detail.html?goodsid=${$aaaa}`
+            }
+            window.location.href = `detail.html?username=${$searchusername}&goodsid=${$aaaa}`;   
+        })
+
+    })
+
+</script>

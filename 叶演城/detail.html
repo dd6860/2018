@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script src="lib/jquery-3.2.1.js"></script>
+	<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <script src="lib/jquery-lxzoom/jquery.lxzoom.js"></script>
+    <script src="http://www.lanrenzhijia.com/ajaxjs/1.4.2/jquery-1.4.2.min.js"></script>
+
+    <script src="lib/jquery.imagezoom.min.js"></script> 
+    <style>
+        body{height: 3000px;}
+        .showtu img{width: 100%;height: 100%;}
+        .d_f1{margin: 10px 0 ;border-bottom: 1px solid #ccc;}
+        .d_f2{height: 720px;padding:10px 0;}
+        .d_r2{padding: 10px 0 0 ; margin-top:10px;border-top: 1px solid #ccc;overflow: hidden;}
+        .d_r3{padding: 20px 0; border-top: 1px solid #ccc;overflow: hidden;}
+        .d_r4{padding: 20px 0 0 10px; border-top: 1px solid #ccc;overflow: hidden;}
+        .d_f3{height: 48px;margin-top: 0px;background-color: #eee;border-bottom: 2px solid orange;}
+        .d_f3 li{height:46px;line-height: 33px;font-size: 18px;margin:0 1px;}
+        .d_f3 .act{background-color: orange;color:#fff;}
+        .d_l li{height: 95px; margin:7px;border:1px solid #ccc;}
+        .d_f4{padding:20px 0;}
+        .d_f4 img{margin-bottom: 20px;}
+        .d_r p{font-size: 14px;}
+
+        body{margin:0; font:12px "\5B8B\4F53",san-serif;}
+        div,ul,li{padding:0; margin:0;}
+        li{list-style-type:none;}
+        img{vertical-align:top;border:0;}
+        .tb-pic a{display:table-cell;text-align:center;vertical-align:middle;}
+        .tb-pic a img{vertical-align:middle;}
+        .tb-pic a{*display:block;*font-family:Arial;*line-height:1;}
+        .tb-thumb{margin:10px 0 0;overflow:hidden;}
+        .tb-thumb li{background:none repeat scroll 0 0 transparent;float:left;height:82px;;overflow:hidden;}
+        .tb-s310, .tb-s310 a{height:80%;width:100%;}
+        .tb-s310, .tb-s310 img{max-height:200%;max-width:100%;}
+        .tb-s310 a{*font-size:271px;}
+        .tb-s40 a{*font-size:35px;}
+        .tb-s40, .tb-s40 a{height:70px;width:70px;}
+        .tb-booth{border:1px solid #CDCDCD;position:relative;z-index:1;}
+        .tb-thumb .tb-selected{background:none repeat scroll 0 0 #C30008;height:82px;padding:2px;}
+        .tb-thumb .tb-selected div{background-color:#FFFFFF;border:medium none;}
+        .tb-thumb li div{border:1px solid #CDCDCD;}
+        div.zoomDiv{z-index:999;position:absolute;top:0px;left:0px;width:200px;height:200px;background:#ffffff;border:1px solid #CCCCCC;display:none;text-align:center;overflow:hidden;}
+        div.zoomMask{position:absolute;background:url("http://demo.lanrenzhijia.com/2015/jqzoom0225/images/mask.png") repeat scroll 0 0 transparent;cursor:move;z-index:1;}
+        .tb-pic img{width: 100%;height: 100%;}
+        .shuju1baba{width: 500px;height: 550px;}
+        .shuju1baba img{width: 500px;height: 550px !important;}
+    </style>
+</head>
+<body>
+    <div class="detail">
+        <div class="container">
+            <div class="d_f1">
+                <p>您的位置：<a href="shouye2.html">走秀首页</a>&nbsp;>&nbsp;<a href="list.html">女包</a>&nbsp;>&nbsp;<a href="list.html">手提包</a>&nbsp;>&nbsp;女士灰色牛皮手提包36094</p>
+            </div>
+            <div class="d_f2">
+                <div class="d_l col-sm-5">
+                    <div class="tb-booth tb-pic tb-s310 shuju1baba">
+                        <a href="images/01.jpg"><img src="img/d_d_1_1.jpg" alt="" rel="img/d_d_1_1.jpg" class="jqzoom shuju1" /></a>
+                    </div>
+                    <ul class="tb-thumb" id="thumblist">
+                        <li class="tb-selected">
+                            <div class="tb-pic tb-s40">
+                                <a href="#">
+                                    <img src="img/d_d_1_1.jpg" mid="img/d_d_1_1.jpg"  big="img/d_d_1_1.jpg" class="shuju2" >
+                                </a>
+                            </div>
+                        </li>
+                        <li><div class="tb-pic tb-s40"><a href="#"><img src="img/d_d_1_2.jpg"  class="shuju3" ></a></div></li>
+                        <li><div class="tb-pic tb-s40"><a href="#"><img src="img/d_d_1_3.jpg" mid="img/d_d_1_3.jpg" big="img/d_d_1_3.jpg" class="shuju4"></a></div></li>
+                        <li><div class="tb-pic tb-s40"><a href="#"><img src="img/d_d_1_4.jpg" mid="img/d_d_1_4.jpg" big="img/d_d_1_4.jpg" class="shuju5"></a></div></li>
+                        <li><div class="tb-pic tb-s40"><a href="#"><img src="img/d_d_1_5.jpg" mid="img/d_d_1_5.jpg" big="img/d_d_1_5.jpg" class="shuju6"></a></div></li>
+                    </ul>
+                </div>
+                <div class="d_r col-sm-7" >
+                    <div class="d_r1" style="overflow: hidden;">
+                        <div style="overflow: hidden;">
+                          <h4 class="col-sm-5 shuju7">女士灰色牛皮手提包36094</h4> 
+                          <h4 class=""style="color:orange"> 限时 <b class="shuju11">8</b> 折</h4> 
+                        </div>
+                        <p class="paizi col-sm-3 shuju8" style="padding-left:15px;">Coach</p>
+                        <p class="col-sm-5"><a href="">已有6108条品牌评论</a></p>
+                        <p class="col-sm-4">商品编号：74268014</p>
+                    </div>
+                    <div class="d_r2">
+                        <p class="col-sm-6">
+                            <span class="col-sm-6">限时抢购：</span>
+                            <span class="price shuju9"style="color:red;font-size: 20px;">￥1835</span></p>
+                        <p class="col-sm-6"><span>剩余：</span><span class="glyphicon glyphicon-time"></span> <span class="times">456465465456456</span></p>
+                        <p class="oldprice col-sm-12"><span class="col-sm-3">走&nbsp;秀&nbsp;价&nbsp;：</span> <del><span  class="shuju10">￥2293</span></del> </p>
+                        <p class="col-sm-12"><span class="col-sm-3">发&nbsp;货&nbsp;地&nbsp;：</span> <span style="color:orange;">国内预计&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2-5个工作日送达</span></p>
+                    </div>
+                    <div class="d_r3">
+                        <p><span class="col-sm-3">颜&nbsp;&nbsp;&nbsp;&nbsp;色：</span><button  class="shuju12">灰色</button></p> 
+                        <p><span class="col-sm-3">尺&nbsp;&nbsp;&nbsp;&nbsp;码：</span><button>30*24*15cm</button></p> 
+                        <!-- <p><span class="col-sm-3">数&nbsp;&nbsp;&nbsp;&nbsp;量：</span>
+                            <button class="btn btnjian">-</button>
+                            <input type="text" style="width: 25px;" value=1 class="btnnum">
+                            <button class="btn btnjia">+</button>
+                        </p> -->
+                        <p class="col-sm-12">
+                            <span class="glyphicon glyphicon-folder-open"style="color:orange;"></span>
+                                支持分期付款
+                            <span class="glyphicon glyphicon-home" style="color:orange;"></span>
+                                由索贝纳皮具精品店提供
+                            <span class="glyphicon glyphicon-user" style="color:orange;"></span >
+                                由走秀网提供售后服务
+                            </p>
+                        <div class="anniu col-sm-12" style="margin:20px 0 ;">
+                            <button class="btn btn-warning col-sm-3 goumai">立即购买</button>
+                            <button class="btn btn-success col-sm-3 col-sm-offset-1 gouwuche"><span class="glyphicon glyphicon-shopping-cart"></span> 放入购物车</button>
+                            <button class="btn col-sm-2 col-sm-offset-1"><span class="glyphicon glyphicon-plus"></span> 收藏</button>
+                        </div>
+                        <p><span style="color:orange;">&nbsp;&nbsp;&nbsp;&nbsp;<b>电话订购400-888-4499</b> </span><small>（09:00-19:00）</small></p>                      
+                    </div>
+                    <div class="d_r4">
+                        <img src="img/d_erweima.png" alt="">
+                    </div>
+                    <div class="d_fd"></div>
+                </div>
+            </div>
+            <div class="d_f3">
+                <ul style="overflow: hidden;">
+                    <li class="d_f31 col-sm-2 btn act">商品信息</li>
+                    <li class="d_f32 col-sm-2 btn act">品牌评论(6108)</li>
+                    <li class="d_f33 col-sm-2 btn">走秀承诺</li>
+                    <li class="d_f34 col-sm-2 btn">服务保障</li>
+                    <li class=" col-sm-1"></li>
+                    <li class="d_f35 col-sm-2  btn " style="padding: 0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="d_total" style="color:red;font-size: 20px">￥1835</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-success btn-lg">放入购物袋</button></li>
+                </ul>
+            </div>
+            <div class="d_f4">
+                <div style="width: 900px;">
+                    <div class="d_f41">
+                        <p style="font-size: 20px;background-color: #eee;line-height: 40px;padding-left: 20px;"><b>商品属性</b> </p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped" style="text-align: center;">
+                                <tbody>
+                                    <tr>
+                                        <td>包袋大小：大号</td>
+                                        <td>开袋方式：拉链</td>
+                                        <td>背拿方式：手提</td>
+                                    </tr>
+                                    <tr>
+                                        <td>适合性别：女性</td>
+                                        <td>风格：通勤</td>
+                                        <td>外形：横款</td>
+                                    </tr>
+                                    <tr>
+                                        <td>货到付款：不支持</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>    
+                                </tbody>
+                            </table>                        
+                        </div>
+                        <p style="font-size: 20px;background-color: #eee;line-height: 40px;margin-top: 20px;padding-left: 20px;"><b>商品实拍</b> </p>
+                        <p style="font-size: 16px;"><span class="col-sm-2"  style="color:orange;line-height: 40px;">&nbsp;温馨提示：
+                            </span><span class=" col-sm-10">走秀网所有商品均为实物拍摄，我们尽最大努力将商品的原貌展示给您，但因拍摄灯光、个人显示器等原因，可能会有一定色差，请以实物为准。</span></p>
+                        <ul style="margin-top: 80px;" class="showtu">
+                            <li style="height: 850px;"><img src="img/man16.png" alt=""></li>
+                            <li style="height: 850px;"><img src="img/man16.png" alt=""></li>
+                            <li style="height: 850px;"><img src="img/man16.png" alt=""></li>
+                            <li style="height: 850px;"><img src="img/man16.png" alt=""></li>
+                            <li style="height: 850px;"><img src="img/man16.png" alt=""></li>
+                        </ul>
+                    </div>
+                    <div class="d_f42" style="height: 1000px;display: none;"><h4>无内容</h4></div>
+                    <div class="d_f43" style="height: 1000px;display: none;"><h4>无内容</h4></div>
+                    <div class="d_f44" style="height: 1000px;display: none;"><h4>无内容</h4></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    $(function(){
+    // 放大镜
+        $(".jqzoom").imagezoom();
+        $("#thumblist li a").click(function(){
+            $(this).parents("li").addClass("tb-selected").siblings().removeClass("tb-selected");
+            $(".jqzoom").attr('src',$(this).find("img").attr("mid"));
+            $(".jqzoom").attr('rel',$(this).find("img").attr("big"));
+        })
+        $(".gouwuche").live('click',function(){
+            console.log(1);
+            if(location.href.indexOf('username')>0){
+                console.log(1);
+                $username = location.href.split('?')[1].split("&")[0].split('=')[1];
+                console.log(1);                
+                if(location.href.indexOf('goodsid')>0){
+                    $goodsid = location.href.split('goodsid')[1].slice(1);
+                            $.ajax({
+                                // 请求类型
+                                    type:'POST',
+                                // 传输的数据
+                                    data:`username=${$username}&goodsid=${$goodsid}`,
+                                // 需要用到的PHP文件
+                                    url:'api/jiarugouwuche.php',
+                                // 链接成功后执行的函数，传入返回的结果
+                                    success:function(res){ 
+
+                                        console.log(res)
+                                        $confirm = JSON.parse(res);
+                                        console.log($confirm)
+                                    }
+                            })
+
+                }
+                alert("已添加购物车");
+            }else{
+                alert("请注册账号");
+                window.location.href=`login.html`
+            }
+        })
+
+        $(".goumai").live('click',function(){
+            if(location.href.indexOf('username')>0){
+              $username = location.href.split('?')[1].split("&")[0].split('=')[1];
+
+
+            window.location.href=`gouwuche.html?username=${$username}`  
+            }else{
+                alert("请注册账号");
+                window.location.href=`login.html`
+            }
+            
+
+        })
+
+
+
+    // 加载数据
+        if(location.href.indexOf('goodsid')>0){
+                $lll=location.href
+                console.log($lll);
+                $goodsid=$lll.split('&')[1].split('=')[1]
+                console.log($goodsid)
+
+
+            $.ajax({
+                // 请求类型
+                    type:'POST',
+                // 传输的数据
+                    data:`goodsid=${$goodsid}`,
+                // 需要用到的PHP文件
+                    url:'api/detail_1jiazai.php',
+                // 链接成功后执行的函数，传入返回的结果
+                    success:function(res){  
+                        console.log(999)
+                        // console.log(res)
+                        // 结果转成数组
+                        $confirm = JSON.parse(res);
+                        console.log($confirm)
+                        $res="";
+                        $confirm.forEach(function(item){
+                            $(".shuju1").attr('src',item.url);
+                            $(".shuju1").attr('rel',item.url);
+
+                            $(".shuju2").attr('src',item.url2);
+                            $(".shuju2").attr('mid',item.url2);
+                            $(".shuju2").attr('big',item.url2);
+
+                            $(".shuju3").attr('src',item.url3);
+                            $(".shuju3").attr('mid',item.url3);
+                            $(".shuju3").attr('big',item.url3);
+
+                            $(".shuju4").attr('src',item.url4); 
+                            $(".shuju4").attr('mid',item.url4);
+                            $(".shuju4").attr('big',item.url4);
+
+                            $(".shuju5").attr('src',item.url5); 
+                            $(".shuju5").attr('mid',item.url5);
+                            $(".shuju5").attr('big',item.url5);
+
+                            $(".shuju6").attr('src',item.url6); 
+                            $(".shuju6").attr('mid',item.url6);
+                            $(".shuju6").attr('big',item.url6);
+
+                            $(".shuju7").text(item.describe);
+                            $(".shuju8").text(item.brand);
+                            $(".shuju9").text(item.newprice);
+                            $(".shuju10").text(item.oldprice);
+                            $(".shuju11").text(item.discount);
+                            $(".shuju12").text(item.color);
+                            $(".showtu").children().eq(0).find("img").attr('src',item.url2); 
+                            $(".showtu").children().eq(1).find("img").attr('src',item.url3); 
+                            $(".showtu").children().eq(2).find("img").attr('src',item.url4); 
+                            $(".showtu").children().eq(3).find("img").attr('src',item.url5); 
+                            $(".showtu").children().eq(4).find("img").attr('src',item.url6); 
+                        }) 
+                    }
+                })
+
+
+
+
+
+
+
+
+
+        }
+
+        // 减少
+        // var currentNum=1;
+    //     $(".btnjian").on('click',function(){
+    //         if(currentNum === 1){
+    //         // 提示文字
+    //             currentNum=1;
+    //             $buycarsnumshow.text('0');
+    //         }
+    //         else{
+    //             currentNum--;
+    //             $('.btnnum').attr('value',currentNum);
+    //         }
+    //     })
+    // // 增加
+    //     $('.btnjia').on('click',function(){
+    //         if(currentNum >= 1){
+    //             currentNum++;
+    //         }
+    //         $('.btnnum').attr('value',currentNum);
+    //     });  
+});
+</script>
