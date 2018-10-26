@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script src="lib/jquery-3.2.1.js"></script>
+	<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <script src="lib/jquery-lxzoom/jquery.lxzoom.js"></script>
+    <style>
+        a{color:#000;}
+        .top1{height: 83px;font-size: 12px;
+        background-color:#000;
+        color:#fff;padding-top: 5px;}
+        .top_ul>li{float: left;padding-right: 10px;margin-right: 1px;
+        position: relative;
+        }
+        /* .top_ul>li:hover {color:red;}  */
+        /* 上一，无样式 */
+        /* 上二，购物车 */
+        .top_gwc{position: relative;}
+        .top_gwc_div{width: 226px;min-height: 50px;background-color:#eee;position: absolute;left: 10px;top: 16px;padding:10px;
+        display: none;
+        }
+
+        /* 上三，我的 */
+        .top_ms_menu{position: absolute;left: 0;top: 16px;background-color: #eee;width: 90px;height: 110px;
+        display:none;
+        }
+        .top_ms_menu li{padding:3px 0 3px 15px;}
+        /* .top_ms_menu li:hover a{color:red;} */
+
+        /* logo位置 */
+        .top1_c{position: absolute;left: 650px;top: 0px;}
+        .top1_c img{width: 215px;height: 36px;}
+
+        .top1_b{margin-top: 39px;}
+
+        .top1m_b_ul li{float:left;padding: 5px 20px;border-bottom: 3px solid #000;}
+        .top1m_b_ul li a{color:#fff;font-size: 18px;}
+        .top1m_b_ul .act{border-bottom: 3px solid #ccc;}
+    </style>
+</head>
+<body>
+    <div class="top1">
+        <div class="container">
+            <!-- 左上 -->
+            <div class="top1_l col-sm-6">
+                <ul class="top_ul ">
+                    <!-- 注册登录 -->
+                    <li class="top_dl col-sm-2">
+                        <a title="登录/注册" href="login.html" style="color:#fff;">登录/注册</a> 
+                    </li> 
+                    <!-- 购物车 -->
+                    <li class="top_gwc col-sm-3" id="top_gwc">
+                        <p><span class="glyphicon glyphicon-lock" style="padding-right: 10px;"></span>购物袋
+                            <span id="num" style="color: rgb(209, 83, 83);margin:0 10px ">0</span>件</p>
+                        <div class="top_gwc_div" style="color:#000;">
+                            <h4 style="font-size: 16px;">购物袋暂时没有商品!</h4>
+                            <ul class="gwclist">
+                                <li>未写内容</li>
+                                <li>未写内容</li>
+                                <li>未写内容</li>
+                                <li>未写内容</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- 用户中心 -->
+                    <li class="top_ms col-sm-2">
+                        我的走秀
+                        <ul class="top_ms_menu ">
+                            <li><a href="">我的订单</a></li>
+                            <li><a href="">自助退货</a></li>
+                            <li><a href="">我的收藏</a></li>
+                            <li><a href="">帮助中心</a></li>
+                            <li><a href="">全部吐槽</a></li> 
+                        </ul>
+                    </li> 
+                </ul>
+            </div>
+            <!-- 右上，搜索框 -->
+            <div class="top1_r  col-sm-3 col-sm-offset-3"  >
+                <input type="search"  class="top1m_r_i  col-sm-8" placeholder="请搜索Kenzo试试" style="color:#000;">
+                <span class="glyphicon glyphicon-zoom-in btn-btn-xs"></span>
+            </div>
+            <!-- 中上，logo 用类名添加logo-->
+            <div class="top1_c"><a href=""><img src="img/logo.png" alt=""></a></div>
+            <!-- 下部 -->
+            <div class="top1_b col-sm-offset-3" >
+                <ul class="top1m_b_ul">
+                    <li><a href="" style="color:#ccc">首页</a></li>
+                    <li><a href="" class="top1m_b_ul_a">新品</a></li>
+                    <li><a href="" class="top1m_b_ul_a">男士</a></li>
+                    <li><a href="" class="top1m_b_ul_a">女士</a></li>
+                    <li><a href="" class="top1m_b_ul_a">品牌</a></li>
+                    <li><a href="" class="top1m_b_ul_a">专题</a></li>
+                    <li><a href="" class="top1m_b_ul_a">手机走秀</a></li>      
+                </ul>
+            </div>
+        </div>
+    </div> 
+    <script>
+        jQuery(function($){
+            $(".top_gwc").on("mouseenter","p",function(e){ 
+                $(".top_gwc_div").fadeIn();
+
+            }).on("mouseleave",function(){ 
+                    $(".top_gwc_div").fadeOut();
+            })
+
+            $(".top_ms").on("mouseenter", function(){ 
+                this.style.background="#eee";
+                $(".top_ms_menu").fadeIn();
+                $(".top_ms_menu a").css("color","red");
+                $(".top_ms").css("color","red");
+            }).on("mouseleave",function(){      
+                $(".top_ms_menu").fadeOut(); 
+                $(".top_ms_menu a").css("color","red");  
+                $(".top_ms").css("color","#fff").css("background","#000");
+            })
+
+
+            $(".top1m_b_ul li").on("mouseover   ",function(){
+                $(this).addClass("act");
+                $(this).siblings().removeClass("act");
+                $(this).find("a").css("color","#999")
+                $(this).siblings().find(".top1m_b_ul_a").css("color","#fff")
+            })
+
+        })
+    </script>
+</body>
+</html>
